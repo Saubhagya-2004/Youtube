@@ -3,13 +3,19 @@ import { FaMicrophone, FaRegUserCircle } from "react-icons/fa";
 import { IoLogoYoutube } from "react-icons/io";
 import { IoSearchOutline } from "react-icons/io5";
 import { RxHamburgerMenu } from "react-icons/rx";
+import { togglemenu } from "../utils/appSlice";
+import { useDispatch } from "react-redux";
 
 const Head = () => {
+  const dispatch = useDispatch();
+  const toggleMenu = () => {
+    dispatch(togglemenu());
+  };
   return (
     <>
       <div className="grid grid-flow-col p-2 m-3 shadow-lg align-middle rounded-b-xl w ">
         <div className="flex gap-3 col-span-1">
-          <div>
+          <div onClick={toggleMenu} className="flex cursor-pointer">
             <RxHamburgerMenu size={25} />
           </div>
           <div className="flex ">

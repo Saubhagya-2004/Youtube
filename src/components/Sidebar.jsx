@@ -1,11 +1,17 @@
 import React from "react";
 import { IoMdMusicalNote } from "react-icons/io";
 import { IoGameController } from "react-icons/io5";
-import { MdOndemandVideo, MdOutlineKeyboardArrowRight, MdSportsSoccer } from "react-icons/md";
+import { MdOndemandVideo, MdSportsSoccer } from "react-icons/md";
 import { SiYoutubeshorts } from "react-icons/si";
 import { TiHome } from "react-icons/ti";
+import { useSelector } from "react-redux";
 
 const sidebar = () => {
+  const isMenuOpen = useSelector((store) => store.app.isMenuOpen);
+  //early return
+  if (!isMenuOpen) {
+    return null;
+  }
   return (
     <div className="shadow-2xl w-50 h-screen text-center">
       <ul className="m-3">
@@ -27,11 +33,11 @@ const sidebar = () => {
       </div>
       <ul className="m-4">
         <li>dnh</li>
-        <li></li>
-        <li></li>
-        <li></li>
-        <li></li>
-        <li></li>
+        <li>xxx</li>
+        <li>yyy</li>
+        <li>zzz</li>
+        <li>aaa</li>
+        <li>bbb</li>
       </ul>
     </div>
   );
