@@ -16,7 +16,7 @@ const Viediocontainer = () => {
     
   }
   return (
-    <div className='flex flex-wrap'>
+    <div className='flex flex-wrap justify-center mt-[100px]'>
       {
         videos.map((video)=>(
           <ViedioCard key={video.id} info={video}/>

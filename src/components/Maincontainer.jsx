@@ -1,10 +1,10 @@
 import React from 'react'
-import Buttonlist from './Buttonlist'
-import Viediocontainer from './Viediocontainer'
+// import Buttonlist from './Buttonlist'
+import Viediocontainer from './ViedioContainer'
 const Maincontainer = () => {
   return (
-    <div>
-      <Buttonlist/>
+    <div >
+      {/* <Buttonlist/> */}
       <Viediocontainer/>
     </div>
   )

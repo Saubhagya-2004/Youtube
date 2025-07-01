@@ -8,14 +8,20 @@ import { useDispatch } from "react-redux";
 import { CiBellOn } from "react-icons/ci";
 import { RiVideoAddFill } from "react-icons/ri";
 import Profile from "../assets/profile.avif";
+import Buttonlist from "./Buttonlist";
+import { useLocation } from "react-router-dom";
+
 const Head = () => {
   const dispatch = useDispatch();
+  const location = useLocation();
+
   const toggleMenu = () => {
     dispatch(togglemenu());
   };
+
   return (
     <>
-      <div className="flex justify-between p-2 m-3 shadow-lg align-middle rounded-b-xl  ">
+      <div className="flex fixed w-full justify-between p-5 shadow-lg align-middle rounded-b-xl bg-white z-50 ">
         <div className="flex gap-3 col-span-1">
           <div className="flex items-center cursor-pointer space-x-3">
             <RxHamburgerMenu size={25} onClick={toggleMenu} />
@@ -63,6 +69,13 @@ const Head = () => {
           </div>
         </div>
       </div>
+      
+      {/* Buttonlist moved outside the fixed header */}
+      {location.pathname === "/" && (
+        <div className="fixed top-18 p-1 w-full z-10 bg-white">
+          <Buttonlist />
+        </div>
+      )}
     </>
   );
 };
