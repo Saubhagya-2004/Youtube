@@ -1,7 +1,7 @@
 import React from "react";
 import { AiOutlineLike } from "react-icons/ai";
 import { CgPlayList } from "react-icons/cg";
-import { FaChevronRight, FaFire, FaYoutube } from "react-icons/fa";
+import { FaChevronRight, FaFire, FaRegCopyright, FaYoutube } from "react-icons/fa";
 import { FaChildDress } from "react-icons/fa6";
 import { FiUserCheck } from "react-icons/fi";
 import { GiLinkedRings } from "react-icons/gi";
@@ -21,10 +21,17 @@ import {
 } from "react-icons/md";
 import { PiNewspaperClipping } from "react-icons/pi";
 import { RiShoppingBag4Line } from "react-icons/ri";
-import { SiCoursera, SiYoutubegaming, SiYoutubekids, SiYoutubemusic, SiYoutubeshorts } from "react-icons/si";
+import {
+  SiCoursera,
+  SiYoutubegaming,
+  SiYoutubekids,
+  SiYoutubemusic,
+  SiYoutubeshorts,
+} from "react-icons/si";
 import { TbBrandYoutubeKids } from "react-icons/tb";
 import { TiHome } from "react-icons/ti";
 import { useSelector } from "react-redux";
+
 
 const sidebar = () => {
   const isMenuOpen = useSelector((store) => store.app.isMenuOpen);
@@ -78,7 +85,7 @@ const sidebar = () => {
     {
       id: 3,
       name: "Music",
-      icon:<MdOutlineMusicNote />,
+      icon: <MdOutlineMusicNote />,
     },
     {
       id: 4,
@@ -118,37 +125,41 @@ const sidebar = () => {
   ];
   const sidebaritems3 = [
     {
-      id:1,
-      name:"Youtube Premium",
-      icon:<FaYoutube />
+      id: 1,
+      name: "Youtube Premium",
+      icon: <FaYoutube />,
     },
     {
-      id:2,
-      name:"Youtube Studio",
-      icon:<TbBrandYoutubeKids />
+      id: 2,
+      name: "Youtube Studio",
+      icon: <TbBrandYoutubeKids />,
     },
     {
-      id:3,
-      name:"Youtube Music",
-      icon:<SiYoutubemusic />
+      id: 3,
+      name: "Youtube Music",
+      icon: <SiYoutubemusic />,
     },
     {
-      id:4,
-      name:"Youtube Kids",
-      icon:<SiYoutubekids/>
+      id: 4,
+      name: "Youtube Kids",
+      icon: <SiYoutubekids />,
     },
-  ]
+  ];
   return (
-    <div className="fixed p-4 top-16 w-60 max-h-screen bg-white border-r border-gray-200 overflow-y-scroll overflow-hidden z-40 ">
+    <div className="sticky  p-4 top-16 w-[15%] max-h-screen bg-white border-r border-gray-200 overflow-y-scroll overflow-hidden z-40 ">
       <div className=" flex flex-col items-start space-y-2 py-4 ">
-        <Link to='/'><div className="flex items-center space-x-3 hover:bg-gray-300  rounded-2xl px-3 py-2 w-full cursor-pointer">
-          <TiHome size={24} />
-          <span className="font-medium">Home</span>
-        </div></Link>
-        <Link to='/shorts'><div className="flex items-center space-x-3 hover:bg-gray-300 rounded-2xl px-3 py-2 w-full cursor-pointer">
-          <SiYoutubeshorts size={24} />
-          <span className="font-medium">Shorts</span>
-        </div></Link>
+        <Link to="/">
+          <div className="flex items-center space-x-3 hover:bg-gray-300  rounded-2xl px-3 py-2 w-full cursor-pointer">
+            <TiHome size={24} />
+            <span className="font-medium">Home</span>
+          </div>
+        </Link>
+        <Link to="/shorts">
+          <div className="flex items-center space-x-3 hover:bg-gray-300 rounded-2xl px-3 py-2 w-full cursor-pointer">
+            <SiYoutubeshorts size={24} />
+            <span className="font-medium">Shorts</span>
+          </div>
+        </Link>
         <div className="flex items-center space-x-3 hover:bg-gray-300 rounded-2xl px-3 py-2 w-full cursor-pointer">
           <MdOutlineSubscriptions size={24} />
           <span className="font-medium">Subscriptions</span>
@@ -171,7 +182,7 @@ const sidebar = () => {
             );
           })}
         </div>
-        
+
         <hr className="w-full my-2" />
         {/* item-3 */}
         <div className="mt-3 space-y-3 items-center">
@@ -202,10 +213,18 @@ const sidebar = () => {
             );
           })}
         </div>
-        <hr className="w-full my-2"/>
+        <hr className="w-full my-2" />
       </div>
-  <span></span>
+      <span className="text-sm p-3 text-center mb-10 font-semibold text-gray-500 grid">
+        About press Copyright <br /> Contact usbCreators <br /> Advertise
+        developers 
+        <p className="flex text-gray-600 mt-5">
+          Terms Privacy policy & Safety <br /> How Youtube Works <br /> Test New Feature 
+        </p>
+    
+      </span>
     </div>
-  );};
+  );
+};
 
 export default sidebar;
