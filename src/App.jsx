@@ -12,7 +12,7 @@ const App = () => {
     <BrowserRouter>
       <Provider store={store}>
         <div>
-          <Head /> {/* Header always visible */}
+          <Head /> 
           <div className="flex">
             <Sidebar /> 
             <div className="flex-1 ">

@@ -4,7 +4,7 @@ import VideoCard from './ViedioCard';
 import Shimmer from './Shimmer'; // Recommended to add a loading state
 import { useLocation } from 'react-router-dom';
 import Buttonlist from './Buttonlist';
-const VideoContainer = () => {
+const Feed = () => {
   const [videos, setVideos] = useState([]);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(null);
@@ -38,16 +38,16 @@ const location = useLocation()
           <Buttonlist />
         </div>
       )}
-    <div className='flex flex-wrap justify-center mt-[100px]'>
+    {/* <div className='flex flex-wrap justify-center mt-[100px]'>
       {videos.map((video,key ) => (
         <VideoCard 
           key={video.id?.videoId || video.id} 
           info={video}
         />
       ))}
-    </div>
+    </div> */}
     </>
   );
 };
 
-export default VideoContainer;
+export default Feed;
