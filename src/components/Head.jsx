@@ -8,6 +8,7 @@ import { useDispatch } from "react-redux";
 import { CiBellOn } from "react-icons/ci";
 import { RiVideoAddFill } from "react-icons/ri";
 import Profile from "../assets/profile.avif";
+import { Link } from "react-router-dom";
 
 const Head = () => {
   const dispatch = useDispatch();
@@ -27,7 +28,7 @@ const Head = () => {
             className="cursor-pointer hover:bg-gray-100 p-1 rounded-full"
           />
           <div className="flex items-center space-x-1 cursor-pointer">
-            <IoLogoYoutube size={28} className="text-red-500" />
+           <Link to='/'> <IoLogoYoutube size={28} className="text-red-500" /></Link>
             <span className="text-xl font-bold">YouTube</span>
           </div>
         </div>

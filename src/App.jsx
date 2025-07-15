@@ -6,6 +6,7 @@ import { Provider } from 'react-redux'
 import { BrowserRouter, Route, Routes } from 'react-router-dom'
 import Shorts from './components/shorts'
 import Sidebar from './components/Sidebar'
+import Watchpage from './components/Watchpage'
 
 const App = () => {
   return (
@@ -19,6 +20,7 @@ const App = () => {
               <Routes>
                 <Route path='/' element={<Body />} />
                 <Route path='shorts' element={<Shorts />} />
+                <Route path ='watch' element={<Watchpage/>}/>
               </Routes>
             </div>
           </div>

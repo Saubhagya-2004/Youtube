@@ -1,39 +1,58 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
+import axios from "axios";
+import { Google_Api_key } from "../utils/constant";
 
-const viedioCard = ({ info }) => {
-  // console.log(info);
+const VideoCard = ({ info }) => {
   const { snippet, statistics } = info || {};
-  const { channelTitle, title, thumbnails } = snippet || {};
-  const formatview = (count) => {
-    if (!count) return 0;
-    const num = parseInt(count);
-    if (num >= 1000000) {
-      return (num / 1000000).toFixed(1) + "M";
-    } else if (num >= 1000) {
-      return (num / 1000).toFixed(1) + "K";
-    }
+  const { channelTitle, title, thumbnails, channelId } = snippet || {};
+  const [channelIcon, setChannelIcon] = useState("");
+
+  useEffect(() => {
+    const fetchChannelIcon = async () => {
+      try {
+        const res = await axios.get(
+          `https://youtube.googleapis.com/youtube/v3/channels?part=snippet&id=${channelId}&key=${Google_Api_key}`
+        );
+        // console.log(res);
+        
+        const icon = res.data?.items[0]?.snippet?.thumbnails?.default?.url;
+        if (icon) setChannelIcon(icon);
+      } catch (error) {
+        console.error("Error fetching channel icon:", error);
+      }
+    };
+
+     fetchChannelIcon();
+  }, [channelId]);
+
+  const formatViews = (views) => {
+    if (!views) return "0";
+    const num = parseInt(views);
+    if (num >= 1000000) return (num / 1000000).toFixed(1) + "M";
+    if (num >= 1000) return (num / 1000).toFixed(1) + "K";
     return num.toString();
   };
 
   return (
-    <div className="p-2 m-3 shadow-2xl w-72 rounded-4xl">
+    <div className="p-2 m-5 w-80 rounded-xl shadow-sm hover:shadow-md">
       <img
-        className="rounded-2xl object-cover"
+        className="rounded-lg w-full h-40 object-cover"
         src={thumbnails?.medium?.url}
-        alt="thumbnail"
+        alt={title}
       />
-
-      <div className="p-3">
-        <h3 className="font-semibold text-gray-700 hover:text-blue-500 text-sm mb-2 cursor-pointer h-100%">
-          {title}
-        </h3>
-        <div />
-        <div className="flex flex-col space-y-1">
-          <p className="text-gray-600 hover:text-gray-800 mt-4">
-            {channelTitle}
-          </p>
-          <div className="flex items-center text-gray-500 text-xs">
-            <span>{formatview(statistics?.viewCount)} views</span>
+      <div className="p-2">
+        <h3 className="font-medium text-sm line-clamp-2">{title}</h3>
+        <div className="flex items-center mt-2">
+          <img
+            className="w-8 h-8 rounded-full mr-2"
+            src={channelIcon || "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTMJTHo3IkHitDvs7knlCZHMIqDEImf_yYm2Q&s"}
+            alt={channelTitle}
+          />
+          <div>
+            <p className="text-sm text-gray-600">{channelTitle}</p>
+            <p className="text-xs text-gray-500">
+              {formatViews(statistics?.viewCount)} views
+            </p>
           </div>
         </div>
       </div>
@@ -41,4 +60,4 @@ const viedioCard = ({ info }) => {
   );
 };
 
-export default viedioCard;
+export default VideoCard;
