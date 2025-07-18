@@ -151,7 +151,7 @@ const dispatch = useDispatch();
               /> 
 
               <span className="absolute right-3">
-                <IoMdSend onClick={sendmessage}/>
+                <IoMdSend onClick={sendmessage} size={25}/>
               </span>
             </div>
           </div>
