@@ -131,7 +131,7 @@ const dispatch = useDispatch();
           <h1 className="sm:text-sm text-lg">Top Chart</h1>
           <HiOutlineDotsVertical className="text-black " />
         </div>
-        <div className="overflow-y-auto h-[28rem]"><Livechat/></div>
+        <div className="overflow-y-auto h-[28rem] flex flex-col-reverse"><Livechat/></div>
         <div className="flex items-center justify-between  border-t p-2">
           <div className="space-y-2 flex ">
             <div>
